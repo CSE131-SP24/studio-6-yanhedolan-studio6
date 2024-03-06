@@ -12,6 +12,7 @@ public class IterativeMethods {
 	 * @return the sum of the first n terms of the geometric series (1/2 + 1/4 + 1/8
 	 *         ...)
 	 */
+	
 	public static double geometricSum(int n) {
 		double sum = 0.0;
 		for (int power = 1; power <= n; ++power) {
@@ -19,6 +20,7 @@ public class IterativeMethods {
 		}
 		return sum;
 	}
+	
 
 	/**
 	 * @param p first operand
