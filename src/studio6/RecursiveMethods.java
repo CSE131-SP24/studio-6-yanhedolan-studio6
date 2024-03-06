@@ -45,22 +45,40 @@ public class RecursiveMethods {
 	 * @return an array with the same data as the input but it reverse order
 	 */
 	public static int[] toReversed(int[] array) {
-		
-		
+		int[] reversed = new int[array.length];
+		for (int i = 0; i < array.length; i++) {
+			reversed[i] = array[i];
+		}
+		if(array.length <= 1){
+			return reversed;
+		}
+		else {
 			// FIXME create a helper method that can recursively reverse the given array
-			return reverse(array, array.length/2-1);
-		
+			return reverse(reversed, reversed.length/2-1);
+		}
 	}
 
 	public static int[] reverse(int[] array, int index) {
-		if (index <= 0) {
+		if (index < 0) {
 			return array;
 		}
-		int temp1 = array[index];
-		int temp2 = array[index + array.length/2];
-		array[index] = temp2;
-		array[index + array.length/2] = temp1;
-		return reverse(array, index--);
+		else {
+			int temp1 = array[index];
+			int temp2 = array[array.length-index-1];
+			array[index] = temp2;	
+			array[array.length-index-1] = temp1;
+			return reverse(array, index-1);
+		}
+	}
+	public static void main(String[] args) {
+		int[] test = {0, 3, 4, 5, 8, 9, 7};
+		int[] result = toReversed(test);
+		for (int num: result) {
+			System.out.print(num + " ");
+		}
+		for (int num: test) {
+			System.out.print(num + " ");
+		}
 	}
 	
 	/**
@@ -75,7 +93,6 @@ public class RecursiveMethods {
 	public static void circlesUponCircles(double xCenter, double yCenter, double radius,
 			double radiusMinimumDrawingThreshold) {
 		if (radius <= radiusMinimumDrawingThreshold) {
-			//StdDraw.circle(xCenter, yCenter, radius);
 			
 		}
 		else {
